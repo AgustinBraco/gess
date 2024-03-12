@@ -1,0 +1,120 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.NvBar {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.NvBar .link {
+  color: rgb(158, 158, 158);
+  text-decoration: none;
+  list-style-type: none;
+  flex-wrap: wrap;
+  margin: 10px 20px;
+  font-size: 18px;
+  transition: all 0.6s;
+}
+.NvBar .link:hover {
+  color: rgb(202, 202, 202);
+  transition: all 0.6s;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgba(11, 11, 11, 0.892);
+  width: 100%;
+  height: 300px;
+  color: white;
+  margin-top: auto;
+  font-size: 14px;
+  align-items: center;
+  text-align: center;
+}
+.footer .contFooter {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  text-align: center;
+  margin: auto;
+}
+
+.ContLog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ContLog .log {
+  text-align: center;
+  margin: 25px;
+}
+.ContLog .log .titRegis {
+  list-style-type: none;
+  text-decoration: none;
+  border-radius: 2px;
+  background-color: aquamarine;
+  color: black;
+  border-bottom: solid 2px black;
+  padding: 4px;
+  font-size: 16px;
+  transition: all 0.6s;
+}
+.ContLog .log .titRegis:hover {
+  font-size: 17px;
+  transition: all 0.6s;
+}
+.ContLog .log .cajaLog {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.ContLog .log .cajaLog input {
+  width: 40%;
+  padding: 7px;
+  margin: 8px;
+  transition: all 0.6s;
+  border-radius: 15px;
+}
+.ContLog .log .cajaLog input:hover {
+  background-color: rgb(210, 209, 209);
+  transition: all 0.6s;
+}
+.ContLog .log .cajaLog .btnCont {
+  background-color: black;
+  color: rgb(209, 207, 207);
+}
+.ContLog .log .cajaLog .btnCont:hover {
+  font-size: 19px;
+  transition: all 0.6s;
+  background-color: black;
+  color: rgb(209, 207, 207);
+}
+
+.ContInp {
+  display: flex;
+  justify-content: center;
+  margin: 25px;
+  padding: 5px;
+}
+.ContInp .Inpt {
+  padding: 8px;
+  border-radius: 15px;
+  transition: all 0.6s;
+}
+.ContInp :hover {
+  background-color: rgb(213, 211, 211);
+  transition: all 0.6s;
+}
+
+/*# sourceMappingURL=Style.css.map */

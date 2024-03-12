@@ -1,0 +1,21 @@
+.NvBar{
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	background-color: rgba(31, 52, 90, 0.995);
+	padding: 8px;
+	margin: 8px;
+	.link {
+		color: rgb(158, 158, 158);
+		text-decoration: none;
+		list-style-type: none;
+		flex-wrap: wrap;
+		margin: 10px 20px;
+		font-size: 18px;
+		transition: all 0.6s;
+		&:hover {
+			color: rgb(202, 202, 202);
+			transition: all 0.6s;
+		}
+	}
+}
