@@ -1,7 +1,0 @@
-export {ComoFuncionaUs} from './comoFuncionaUs'
-export {MenuUs} from './menuUs'
-export {Configuracion} from './perfil/configuracion'
-export {Favoritos} from './perfil/favoritos'
-export {Historial} from './perfil/historial'
-export {PrivacidadAndPoliticas} from './perfil/privacidadYpoliticas'
-export {Servicios} from './servicios'
