@@ -1,16 +1,7 @@
 {
-  "version": 2,
-  "buildCommand": "npm run build",
-  "builds": [
-    {
-      "src": "dist/app.js",
-      "use": "@vercel/node"
+  "git": {
+    "deploymentEnabled": {
+      "backend": false
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "dist/app.js"
-    }
-  ]
+  }
 }
