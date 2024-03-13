@@ -2,7 +2,7 @@ import { Server } from 'socket.io';
 
 import chatModelInstance from '../models/chat.model';
 import RedisDB from '../config/redis';
-import { checkJWT } from '../helpers/user.helper';
+import userHelper from '../helpers/user.helper';
 
 
 const chatWebsocket = (io: Server) => {
@@ -11,7 +11,7 @@ const chatWebsocket = (io: Server) => {
     let user_id = '';
 
     socket.on('authenticate', async (token) => {
-      const { id, role } = checkJWT(token);
+      const { id, role } = userHelper.checkJWT(token);
       if (id && role) {
         authenticated = true;
         user_id = id;

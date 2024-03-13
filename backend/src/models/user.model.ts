@@ -35,6 +35,18 @@ class UserModel {
     }
   }
 
+  public async activate(activation_token: string): Promise<IUser | null> {
+    try {
+      const user = await this.model.findOneAndUpdate(
+        { activation_token, active: false },
+        { $set: { active: true } },
+        { new: true, runValidators: true });
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   public async update(id: string, userData: IUser): Promise<IUser | null> {
     try {
       userData.updated_at = new Date();

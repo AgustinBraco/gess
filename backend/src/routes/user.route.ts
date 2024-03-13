@@ -9,6 +9,11 @@ userRouter.post(
   userController.register
 )
 
+userRouter.get(
+  '/activate/:activation_token',
+  userController.activate
+)
+
 userRouter.post(
   '/login',
   userController.login

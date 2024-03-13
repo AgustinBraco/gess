@@ -10,6 +10,7 @@ export interface IUser extends Document {
   username: string;
   password: string;
   name: string;
+  surname: string;
   email: string;
   phone: string;
   role: string;
@@ -19,12 +20,14 @@ export interface IUser extends Document {
   created_at: Date;
   updated_at: Date;
   active: boolean;
+  activation_token: string;
 }
 
-export const UserSchema = new Schema<IUser>({
+const UserSchema = new Schema<IUser>({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true, select: false },
   name: { type: String, required: false },
+  surname: { type: String, required: false },
   email: {
     type: String,
     required: true,
@@ -53,5 +56,10 @@ export const UserSchema = new Schema<IUser>({
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },
   active: { type: Boolean, default: false },
+  activation_token: { type: String, required: false, select: false }
 })
 
+UserSchema.index({ email: 1 }, { unique: true });
+UserSchema.index({ username: 1 }, { unique: true });
+
+export { UserSchema }
