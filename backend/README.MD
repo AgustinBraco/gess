@@ -16,7 +16,7 @@ El servidor es una aplicación monolítica desarrollada en Node.js utilizando Ty
 - **Socket.io**: Biblioteca para comunicación bidireccional en tiempo real a través de WebSocket.
 - **MongoDB**: Base de datos NoSQL utilizada para almacenar datos estructurados.
 - **Redis**: Almacén de estructuras de datos en memoria utilizado para almacenamiento en caché y gestión de sesiones.
-![Diagrama del servidor](/backend/public/backend.jpg "Diagrama del servidor")
+![Diagrama del servidor](https://raw.githubusercontent.com/Taber76/files/main/gess_backend_schema.jpeg "Diagrama del servidor")
 ### ARQUITECTURA
 El servidor sigue el patrón de diseño Modelo-Vista-Controlador (MVC), que divide la aplicación en tres componentes principales:
 - **Modelo (Model)**: Responsable de la gestión y manipulación de datos. Interactúa con las bases de datos MongoDB y Redis para el almacenamiento y recuperación de datos.
@@ -25,11 +25,19 @@ El servidor sigue el patrón de diseño Modelo-Vista-Controlador (MVC), que divi
 ### ENDPOINTS API REST
 #### USERS
 - **POST /api/v1/user/register ->** Registro de usuario, recibe un body donde se deben suministrar los siguientes datos: **username: string; password: string**; name: string; **email: string; phone: string; role: string (GESTOR, USUARIO o ADMIN)**; avatar: string. Los que estan en **negrita** son requeridos. La contrasena debe tener al menos 8 digitos, mayusculas, minusculas y numeros. Luego de realizado el registro, el sisteme enviara un email al correo registrado para dar de alta al usuario.
-- **POST /api/v1/user/login ->** Login de usuario, recibe un body {username, password} y devuelve un token (que debera ser usado en las subsiguientes solicitudes).
+- **POST /api/v1/user/login ->** Login de usuario, recibe un body {username, password} y devuelve un token (que debera ser usado en las subsiguientes solicitudes como Bearer Token).
+- **POST /api/v1/user/login/google ->** Login / register de usuario con google, recibe un body { credential, clientId }, si el usuario no esta registrado lo registra. Devuelve los datos de usuario y un token para ser utilizado en las siguientes solicitudes (por el momento solo permite registrar a el rol USUARIOS y no al rol GESTOR ya que de este ultimo se necesitan mas datos).
+- **PUT /api/v1/user/update ->** Recibe un body con los nuevos datos de usuario (se puede usar tambien para cambiar la contrasena).
+- **GET /api/v1/user/activate/:activation_token ->** Recibe un codigo de activacion, cambia el estado del usuario a activo y devuelve el Bearer token. El codigo de activacion es enviado al email del usuario en el momento del registro.
+#### REVIEWS
+- **POST /api/v1/review/register ->** Recibe un body {sender_id: String, recipient_id: String, rating: Number, comment: String } y registra la calificacion.
+- **PUT /api/v1/review/update/:review_id ->** Recibe un body con {rating: Number, comment: String} y actualiza la calificacion.
+- **GET /api/v1/review/getByRecipientId/:recipient_id ->** Devuelve todas las calificaciones que recibio un usuario.
+- **DELETE /api/v1/review/delete/:review_id ->** Borra la calificacion.
 #### CHATS
 - **GET /api/v1/chat/getByParticipantId/:participant_id ->** Con el id del usuario se obtienen todos los chat del mismo en forma de array: [{id: ‘id del otro participante, username: ‘username del otro participante}, …, ...]. De esa forma en el frontend se puede tener una lista de todos los chats del usuario.
 - **POST /api/v1/chat/open ->** En el body se envia “participants: [{id, username}, {id,  username}]” con los datos de los dos participantes del chat y devuelve el chat con los mensajes.
 ### WEBSOCKET
-- Para ser autenticado el cliente debe emitir ‘authenticate’ e incluir el token obtenido al loguearse, podrá escuchar ‘authenticated’ para comprobar que ha sido autenticado.
-- Para enviar un mensaje debera emitir ‘message’ con el texto del mensaje ‘msg’ y el id del destinatario ‘recipient_id’.
-- Para recibir mensajes debera escuchar ‘message’ donde recibirá el texto del mensaje ‘msg’ y el id del usuario que lo envía ‘user_id’.
+- Para ser autenticado el cliente debe emitir **‘authenticate’** e incluir el token obtenido al loguearse, podrá escuchar **‘authenticated’** para comprobar que ha sido autenticado.
+- Para enviar un mensaje debera emitir **‘message’** con el texto del mensaje **‘msg’** y el **id** del destinatario **‘recipient_id’**.
+- Para recibir mensajes debera escuchar **‘message’** donde recibirá el texto del mensaje **‘msg’** y el **id** del usuario que lo envía **‘user_id’**.

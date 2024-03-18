@@ -20,6 +20,7 @@ export interface IUser extends Document {
   created_at: Date;
   updated_at: Date;
   active: boolean;
+  google_registered: boolean;
   activation_token: string;
 }
 
@@ -56,6 +57,7 @@ const UserSchema = new Schema<IUser>({
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },
   active: { type: Boolean, default: false },
+  google_registered: { type: Boolean, default: false },
   activation_token: { type: String, required: false, select: false }
 })
 

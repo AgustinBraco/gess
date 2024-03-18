@@ -8,3 +8,4 @@ export const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN
 export const SENDINBLUE_API_KEY = process.env.SENDINBLUE_API_KEY
 export const REDIS_PW = process.env.REDIS_PW
 export const REDIS_HOST = process.env.REDIS_HOST
+export const GOOGLE_CLIENT_ID = 'No definido aun'

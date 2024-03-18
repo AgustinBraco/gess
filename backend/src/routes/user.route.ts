@@ -19,6 +19,14 @@ userRouter.post(
   userController.login
 )
 
+userRouter.post(  // body { credential, clientId }
+  'login/google',
+  passport.authenticate('google', { session: false }),
+  (req, res) => {
+    res.status(202).json(req.user);
+  }
+)
+
 userRouter.put(
   '/update',
   passport.authenticate('userJWT', { session: false }),

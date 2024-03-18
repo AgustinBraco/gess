@@ -4,11 +4,12 @@ import userHelper from "../helpers/user.helper";
 
 class UserDto {
 
-  public async register(userData: IUser): Promise<void> {
+  public async register(userData: Partial<IUser>): Promise<IUser> {
     try {
       userData.activation_token = userHelper.newActivationToken();
       const user = await userModelInstance.register(userData);
       await userHelper.sendActivateAccountEmail("Registro usuario Gess", user.email, user.username, 'Gess - Registro', 'Verifica tu cuenta en Gess', user.activation_token);
+      return user;
     } catch (error) {
       throw error;
     }

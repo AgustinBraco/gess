@@ -47,6 +47,7 @@ class UserController {
     }
   }
 
+
   public async update(req: Request, res: Response): Promise<void> {
     try {
       const id = (req.user as AuthenticatedUser).id;

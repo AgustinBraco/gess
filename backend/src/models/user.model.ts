@@ -25,7 +25,7 @@ class UserModel {
     }
   }
 
-  public async register(userData: IUser): Promise<IUser> {
+  public async register(userData: Partial<IUser>): Promise<IUser> {
     try {
       const newUser = new this.model(userData);
       const savedUser = await newUser.save();
