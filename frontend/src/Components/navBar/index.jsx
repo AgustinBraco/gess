@@ -5,7 +5,7 @@ import  Users  from '../../Assets/Users.png';
 const NavBar = () => (
 	<nav className="NvBar">
 		<div className="ContTit">
-			<img src={Gess} alt="" className='Gess'/>
+			<img src={Gess} alt="logo" className='Gess'/>
 			<Link className="link TIT" to="/">Gess</Link>
 		</div>
 		<div className="ContLinks">
@@ -25,7 +25,7 @@ const NavBar = () => (
 				Contactanos
 			</Link>
 		</div>
-		<img src={Users} alt="" className='Users'/>
+		<img src={Users} alt="users" className='Users'/>
 	</nav>
 );
 
